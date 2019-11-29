@@ -7,7 +7,7 @@
 */
 
 function ConvertHandler() {
-  this.regX = /^([\d]+(?:\.?[\d]+)?(?:\/[\d]+(?:\.?[\d]+)?)?)([a-zA-Z]+)?$/;
+  this.regX = /^(?:([\d]+(?:\.?[\d]+)?(?:\/[\d]+(?:\.?[\d]+)?)?))?([a-zA-Z]+)?$/;
 
   this.getNum = function (input) {
 
