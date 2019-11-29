@@ -41,13 +41,15 @@ suite('Unit Tests', function () {
     });
 
     test('Invalid Input (double fraction)', function (done) {
-
-      //done();
+      var input = '1/2/2kg';
+      assert.equal(convertHandler.getNum(input), null);
+      done();;
     });
 
     test('No Numerical Input', function (done) {
-
-      //done();
+      var input = 'kg';
+      assert.equal(convertHandler.getNum(input), null);
+      done();
     });
 
   });
