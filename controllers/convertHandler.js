@@ -8,6 +8,7 @@
 
 function ConvertHandler() {
   this.regX = /^(?:([\d]+(?:\.?[\d]+)?(?:\/[\d]+(?:\.?[\d]+)?)?))?([a-zA-Z]+)?$/;
+  this.validInput = ['gal', 'l', 'mi', 'km', 'lbs', 'kg', 'GAL', 'L', 'MI', 'KM', 'LBS', 'KG'];
 
   this.getNum = function (input) {
 
@@ -20,8 +21,13 @@ function ConvertHandler() {
   this.getUnit = function (input) {
     var match = input.match(this.regX);
     if (match) {
-      return match[2];
+      var input = match[2];
+      if (this.validInput.includes(input)) {
+        return input;
+      }
+      return undefined;
     }
+    return undefined;
   };
 
   this.getReturnUnit = function (initUnit) {

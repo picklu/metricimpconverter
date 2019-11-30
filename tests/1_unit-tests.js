@@ -66,8 +66,8 @@ suite('Unit Tests', function () {
     });
 
     test('Unknown Unit Input', function (done) {
-
-      //done();
+      assert.isUndefined(convertHandler.getUnit('unknown'));
+      done();
     });
 
   });
