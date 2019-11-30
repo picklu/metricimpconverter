@@ -7,7 +7,7 @@
 */
 
 function ConvertHandler() {
-  this.regX = /^(?:([\d]+(?:\.?[\d]+)?(?:\/[\d]+(?:\.?[\d]+)?)?))?([a-zA-Z]+)?$/;
+  this.regX = /^(\d+(?:\.\d+)?(?:\/\d+(?:\.\d+)?)?)?([a-zA-Z]+)?$/;
   this.inputUnits = ['gal', 'l', 'mi', 'km', 'lbs', 'kg'];
   this.expectedUnits = ['l', 'gal', 'km', 'mi', 'kg', 'lbs'];
   this.unitSpelling = ['gallons', 'litters', 'miles', 'kilometers', 'pounds', 'kilograms'];
@@ -15,16 +15,15 @@ function ConvertHandler() {
   this.getNum = function (input) {
 
     var match = input.match(this.regX);
-    if (match) {
-      return eval(match[1]);
-    }
+    var number = match && match[1] ? eval(match[1]) : undefined;
+    return number;
   };
 
   this.getUnit = function (input) {
     var match = input.match(this.regX);
-    var input = match[2] ? match[2].toLowerCase() : undefined;
-    input = this.inputUnits.includes(input) ? input : undefined;
-    return input;
+    var unit = match && match[2] ? match[2].toLowerCase() : undefined;
+    unit = this.inputUnits.includes(unit) ? unit : undefined;
+    return unit;
   };
 
   this.getReturnUnit = function (initUnit) {
@@ -71,7 +70,7 @@ function ConvertHandler() {
 
     }
 
-    return result;
+    return Number(result.toFixed(5));
   };
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
