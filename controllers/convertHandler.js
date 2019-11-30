@@ -33,7 +33,7 @@ function ConvertHandler() {
   };
 
   this.spellOutUnit = function (unit) {
-    var index = this.inputUnits.indexOf(initUnit);
+    var index = this.inputUnits.indexOf(unit);
     return this.unitSpelling[index];
   };
 
