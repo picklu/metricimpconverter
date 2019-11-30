@@ -27,9 +27,8 @@ function ConvertHandler() {
   };
 
   this.getReturnUnit = function (initUnit) {
-    var result;
-
-    return result;
+    var index = this.input.indexOf(initUnit);
+    return this.expect[index];
   };
 
   this.spellOutUnit = function (unit) {
