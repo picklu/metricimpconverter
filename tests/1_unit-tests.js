@@ -60,7 +60,7 @@ suite('Unit Tests', function () {
       var input = ['gal', 'l', 'mi', 'km', 'lbs', 'kg', 'GAL', 'L', 'MI', 'KM', 'LBS', 'KG'];
 
       input.forEach(function (ele) {
-        assert.equal(convertHandler.getUnit(ele), ele);
+        assert.equal(convertHandler.getUnit(ele), ele.toLowerCase());
       });
       done();
     });

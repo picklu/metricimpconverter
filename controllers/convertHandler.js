@@ -8,7 +8,8 @@
 
 function ConvertHandler() {
   this.regX = /^(?:([\d]+(?:\.?[\d]+)?(?:\/[\d]+(?:\.?[\d]+)?)?))?([a-zA-Z]+)?$/;
-  this.validInput = ['gal', 'l', 'mi', 'km', 'lbs', 'kg', 'GAL', 'L', 'MI', 'KM', 'LBS', 'KG'];
+  this.input = ['gal', 'l', 'mi', 'km', 'lbs', 'kg'];
+  this.expect = ['l', 'gal', 'km', 'mi', 'kg', 'lbs'];
 
   this.getNum = function (input) {
 
@@ -20,14 +21,9 @@ function ConvertHandler() {
 
   this.getUnit = function (input) {
     var match = input.match(this.regX);
-    if (match) {
-      var input = match[2];
-      if (this.validInput.includes(input)) {
-        return input;
-      }
-      return undefined;
-    }
-    return undefined;
+    var input = match[2] ? match[2].toLowerCase() : undefined;
+    input = this.input.includes(input) ? input : undefined;
+    return input;
   };
 
   this.getReturnUnit = function (initUnit) {
