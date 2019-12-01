@@ -59,13 +59,14 @@
     <script>
       $(function() {
         $('#convertForm').submit(function() {
+          var formData = $('#convertForm').serialize();
           event.preventDefault();
           $.ajax({
             url: '/api/convert',
             type: 'get',
-            data: $('#convertForm').serialize(),
+            data: formData,
             success: function(data) {
-              $('#result').text(data.string || data);
+              $('#result').text(data.string || 'Error in "' + formData + '"');
               $('#jsonResult').text(JSON.stringify(data));
             }
           });

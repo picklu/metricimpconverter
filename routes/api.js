@@ -24,16 +24,13 @@ module.exports = function (app) {
       console.log("==>", initNum, initUnit)
 
       if (!initNum && !initUnit) {
-        res.status(400)
-          .json({ error: "invalid number and unit" });
+        res.json({ error: "invalid number and unit" });
       }
       else if (!initNum) {
-        res.status(400)
-          .json({ error: "Invalid number" });
+        res.json({ error: "invalid number" });
       }
       else if (!initUnit) {
-        res.status(400)
-          .json({ error: "Invalid unit" });
+        res.json({ error: "invalid unit" });
       }
       else {
         var returnNum = convertHandler.convert(initNum, initUnit);
