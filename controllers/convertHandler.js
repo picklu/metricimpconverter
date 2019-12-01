@@ -18,7 +18,7 @@ function ConvertHandler() {
     var match = input.match(this.regX);
     var number = match && match[1] ? match[1].match(this.regxNumber) : undefined;
     number = number && number[0] ? eval(number[0]) : undefined;
-    return number;
+    return number ? Number(number.toFixed(5)) : undefined;
   };
 
   this.getUnit = function (input) {
