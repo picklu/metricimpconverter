@@ -7,15 +7,17 @@
 */
 
 function ConvertHandler() {
-  this.regX = /^(\d+(?:\.\d+)?(?:\/\d+(?:\.\d+)?)?)?([a-zA-Z]+)?$/;
+  this.regX = /^([\d\/\.]+)?([a-zA-Z]+)?$/;
+  this.regxNumber = /^\d+(?:\.\d+)?(?:\/\d+(?:\.\d+)?)?$/;
   this.inputUnits = ['gal', 'l', 'mi', 'km', 'lbs', 'kg'];
   this.expectedUnits = ['l', 'gal', 'km', 'mi', 'kg', 'lbs'];
-  this.unitSpelling = ['gallons', 'litters', 'miles', 'kilometers', 'pounds', 'kilograms'];
+  this.unitSpelling = ['gallons', 'liters', 'miles', 'kilometers', 'pounds', 'kilograms'];
 
   this.getNum = function (input) {
 
     var match = input.match(this.regX);
-    var number = match && match[1] ? eval(match[1]) : undefined;
+    var number = match && match[1] ? match[1].match(this.regxNumber) : undefined;
+    number = number && number[0] ? eval(number[0]) : undefined;
     return number;
   };
 
